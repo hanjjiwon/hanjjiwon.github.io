@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="urtf-8" />
+    <title>Baking</title>
+    <!-- 익스플로어에서는 가장 최상위 버젼으로 렌더링 -->
+    <!-- 만약 크롬이 깔려있다면 크론 엔진을 사용한다 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <!-- 사이트 설명 -->
+    <meta name="description" content="Waxom free psd template">
+    <!-- 검색 키워드 -->
+    <meta name="keywords" content="free, psd, template, responsive">
+    <meta name="robots" content="index, follow">
+    <!-- viewport 크기는 다양한 사용자 디바이스의 크기에 맞추되 초기 비율은 100% -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"
+        integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous">
+    </script>
+
+    <!-- 폰트구현 - WebFont.load 방식  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+        WebFont.load({
+            google: {
+                families: ['Montserrat:300,400,700', 'Raleway:300,400,500,600,700,800']
+            }
+        });
+    </script>
+    <!-- cycle2-demos-gettingStarted -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://malsup.github.com/jquery.cycle2.js"></script>
+    <!-- cycle2-demos-Carousel-->
+    <script src="http://malsup.github.io/jquery.cycle2.carousel.js"></script>
+    <script>
+        $.fn.cycle.defaults.autoSelector = '.cycle-slideshow';
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Gaegu|Lacquer&display=swap" rel="stylesheet">
+    <!-- home = default ????? -->
+
+    <style>
+        footer {
+            padding-bottom: 10vh;
+            padding-top: 30vh;
+        }
+
+        .footer {
+            width: 100%;
+            height: 120px;
+            display: -webkit-flex;
+            display: flex;
+        }
+
+        .item {
+            margin: 10px;
+            color: rgb(180, 151, 151);
+            font-size: 13px;
+            text-align: left;
+            line-height: 20px;
+        }
+
+        .item:nth-child(1) {
+            -webkit-flex: 3;
+            flex: 1;
+        }
+
+        .item:nth-child(2) {
+            -webkit-flex: 1;
+            flex: 2;
+        }
+
+        .item:nth-child(3) {
+            -webkit-flex: 1;
+            flex: 1;
+            text-align: right;
+        }
+
+        .item_b {
+            font-weight: bolder;
+            size: 15px;
+            line-height: 15px;
+        }
+
+        .top {
+            font-size: 20px;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 30px;
+            height: 30px;
+            background: rgba(240, 164, 255, 0.5);
+            /* border-radius: 50%; */
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- clearfix!!! -->
+        <div class="container clearfix">
+            <h1 class="logo"><a href=""></a></h1>
+            <nav class="clearfix">
+                <ul class="main-menu">
+                    <!-- <li><a href="#">홈</a></li> -->
+                    <!-- 로그인o -->
+                    {% if user.is_authenticated %}
+                    <li><a href="#">{{user.username}}</a>
+                    <li><a href="" class="icon"><i class="fas fa-user"></i></a></li>
+                    <li><a href="javascript:{document.getElementById('logout').submit()}">Logout</a></li>
+                    <form id="logout" method="POST" action="{% url 'accounts:logout' %}">
+                        {% csrf_token %} <input type="hidden" />
+                    </form>
+                    <!-- 로그인x-->
+                    {% else %}
+                    <li><a href="{% url 'accounts:login' %}">로그인</a></li>
+                    <li><a href="{% url 'accounts:signup' %}">회원가입</a></li>
+                    {%endif%}
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="content">
+        <a href="{% url 'photo:list' %}">
+            <h4>게시판</h4>
+        </a>
+    </div>
+</body>
+
+</html>
