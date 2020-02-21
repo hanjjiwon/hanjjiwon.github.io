@@ -4,3 +4,4 @@ summer, 2019
 install
  - pip install django
  - pip install django-imagekit
+ - pip install pillow
