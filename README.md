@@ -6,3 +6,4 @@ install
  - pip install django-imagekit
  - pip install pillow
  - pip install django-hitcount
+ - pip3 install whitenoise
