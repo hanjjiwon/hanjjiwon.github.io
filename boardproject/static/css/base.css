@@ -38,7 +38,7 @@ body {
 .hearder_container .logo a{
     width: 300px;
     height: 230px;
-    background: url(../images/logo1.png) no-repeat;
+    background: url(../images/main_logo.png) no-repeat;
     background-size: 300px auto;
     text-indent: -9999em;
     display: block;
@@ -273,4 +273,16 @@ body {
 
 .paginator_container .pagination .disabled a{
     visibility: hidden;
+}
+
+
+.main_text{
+    background-color:white;
+    text-align: center;
+    width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border: 3px solid rgb(183, 155,152);
+    border-radius: 30px;
 }
