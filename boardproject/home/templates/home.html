@@ -1,9 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="urtf-8" />
     <title>Baking</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
     <!-- 익스플로어에서는 가장 최상위 버젼으로 렌더링 -->
     <!-- 만약 크롬이 깔려있다면 크론 엔진을 사용한다 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
@@ -103,35 +107,80 @@
 <body>
     <header>
         <!-- clearfix!!! -->
-        <div class="container clearfix">
-            <h1 class="logo"><a href=""></a></h1>
-            <nav class="clearfix">
-                <ul class="main-menu">
-                    <!-- <li><a href="#">홈</a></li> -->
-                    <!-- 로그인o -->
-                    {% if user.is_authenticated %}
-                    <li><a href="#">{{user.username}}</a>
-                    <li><a href="" class="icon"><i class="fas fa-user"></i></a></li>
-                    <li><a href="javascript:{document.getElementById('logout').submit()}">Logout</a></li>
-                    <form id="logout" method="POST" action="{% url 'accounts:logout' %}">
-                        {% csrf_token %} <input type="hidden" />
-                    </form>
-                    <!-- 로그인x-->
-                    {% else %}
-                    <li><a href="{% url 'accounts:login' %}">로그인</a></li>
-                    <li><a href="{% url 'accounts:signup' %}">회원가입</a></li>
-                    {%endif%}
+        <div id="hearder_wrap">
+            <div class="hearder_container">
+                <div class="logo">
+                    <a href="{% url 'home' %}"></a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a class="" href="{% url 'home' %}">Home</li>
+                        <li><a class="" href="{% url 'photo:list' %}">Board</li>
+                        {%if user.is_authenticated%}
+                        <li><a href="#">{{user.username}}</a></li>
+                        <li><a href="javascript:{document.getElementById('logout').submit()}">Logout</a></li>
+                        <form id="logout" method="POST" action="{% url 'accounts:logout' %}">
+                            {% csrf_token %} <input type="hidden" />
+                        </form>
+                    </ul>
 
-                </ul>
-            </nav>
+                </nav>
+                {%else%}
+                <li><a href="{%url 'accounts:login'%}">Login</a></li>
+                <li><a href="{%url 'accounts:signup'%}">회원가입</a></li>
+                {%endif%}
+
+            </div>
         </div>
     </header>
     
-    <main class="content">
-        <a href="{% url 'photo:list' %}">
-            <h4>게시판</h4>
-        </a>
+    <div class ="main_text">
+        <pre>
+
+
+안녕하세요
+2019년 멋쟁이 사자처럼 7기로 활동하였습니다.
+한 학기동안 장고를 사용한 웹프로그래밍을 하였습니다.
+여름, 멋사 해커톤을 준비하면서 공부하며 만든 사진 게시판입니다.
+기본적으로 글, 댓글을 구현하였고
+추가적으로 좋아요 기능과 조회수를 구현하였습니다.
+장고를 사용하여 처음 만들어 본 프로젝트라기에도 애매한 프로젝트입니다!
+
+
+*** 
+블로그를 늦게 시작하여 이 프로젝트를 언젠가 다시 정리해서 올려야지 올려야지 미루기만하다가 이제서야 올립니다.
+사실 디자인을 조금 더 손보고 주석처리를 완벽하게하여 올리고싶었으나
+저의 게으름이 열일을하여 그냥 이상태라도 올려봅니다. 
+***
+        </pre>
     </div>
+
+    <footer>
+        <div class="footer">
+                <div class="item">
+                    <img src='../../static/images/han_turtle.png' style="width: 100px; height:100px;" alt="한터틀">
+                </div>
+                <div class="item">
+                    <p>
+        
+        (주)한터틀 | 대표이사 : 한지원 |
+        주소 : 광주광역시 동구 필문대로 309 
+        <br><br>
+        사업자등록번호:123456789 | 통신판매신고 : age21summer |
+        <h7>copyright(c) 2019 all right reserved</h7>
+                </p>
+                </div>
+                <div class="item">
+                    <div class='item_b'> BO SNS</div>
+                    유튜브 | 블로그 | 인스타그램
+                    <div class='item_b'>고객센터</div>
+                    평일 : 9:00-18:30
+                    <div class='item_b'>1:1상담</div>
+                    누가할래?난 안해
+                </div>
+            </div>
+ 
+</footer>
 </body>
 
 </html>
